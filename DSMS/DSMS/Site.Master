@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DSMS.Site" %>
+
+<%@ Register Assembly="OfficeWebUI" Namespace="OfficeWebUI.Ribbon" TagPrefix="cc2" %>
+<%@ Register Assembly="OfficeWebUI" Namespace="OfficeWebUI.Workspace" TagPrefix="cc3" %>
+<%@ Register Assembly="OfficeWebUI" Namespace="OfficeWebUI" TagPrefix="cc1" %>
+<%@ Register Assembly="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+    Namespace="System.Web.UI" TagPrefix="cc4" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="smMain" runat="server">
+    </asp:ScriptManager>
+    <cc1:Manager ID="mgrMain" runat="server" UITheme="Office2010Blue" ChromeUI="True"
+        IncludeJQuery="True">
+    </cc1:Manager>
+    <div>
+        <cc1:OfficeRibbon ID="orMain" runat="server" ApplicationMenuText="Admin" ApplicationMenuColor="green"
+            ApplicationMenuType="Backstage" ShowHelpButton="True" ShowToggleButton="True">
+            <ApplicationMenu>
+            </ApplicationMenu>
+            <Contexts>
+                <cc2:RibbonContext ID="rcMain" runat="server" ContextColor="transparent" Text="">
+                    <Tabs>
+                        <cc2:RibbonTab ID="rtIncidents" runat="server" Text="Incidents">
+                            <Groups>
+                                <cc2:RibbonGroup ID="rgIncidents" Text="" runat="server">
+                                    <Zones>
+                                        <cc2:GroupZone runat="server">
+                                            <cc2:LargeItem ID="liNewIncident" runat="server" ImageUrl="~/Images/32/add.png" NavigateUrl="~/Content/Incidents/NewIncident.aspx"
+                                                Text="New Incident">
+                                            </cc2:LargeItem>
+                                            <cc2:LargeItem ID="liNewInvestigation" runat="server" ImageUrl="~/Images/32/search_accounts.png"
+                                                NavigateUrl="~/Content/Investigations/NewInvestigation.aspx" Text="New Investigation">
+                                            </cc2:LargeItem>
+                                            
+                                        </cc2:GroupZone>
+                                    </Zones>
+                                </cc2:RibbonGroup>
+                            </Groups>
+                        </cc2:RibbonTab>
+                        <cc2:RibbonTab ID="rtNonComs" runat="server" Text="Nonconformities">
+                            <Groups>
+                                <cc2:RibbonGroup ID="rgNonComs" Text="" runat="server">
+                                    <Zones>
+                                        <cc2:GroupZone runat="server">
+                                            <cc2:LargeItem ID="liOpenNonComs" runat="server" Text="Open Nonconformances" NavigateUrl="~/Content/Nonconformances/Default.aspx">
+                                            </cc2:LargeItem>
+                                            
+                                        </cc2:GroupZone>
+                                    </Zones>
+                                </cc2:RibbonGroup>
+                            </Groups>
+                        </cc2:RibbonTab>
+                        <cc2:RibbonTab ID="rtWaste" runat="server" Text="Waste">
+                        </cc2:RibbonTab>
+                    </Tabs>
+                </cc2:RibbonContext>
+            </Contexts>
+            <ExtraControlsArea>
+                <cc4:Control ID="Control1" runat="server"></cc4:Control>
+            </ExtraControlsArea>
+        </cc1:OfficeRibbon>
+    </div>
+    <cc1:OfficeWorkspace ID="OfficeWorkspace1" runat="server">
+        <Content>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </Content>
+    </cc1:OfficeWorkspace>
+    </form>
+</body>
+</html>
